@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUXORA DINE — French • Italian • Chinese • Indian</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,400&family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0A09;--bg2:#151410;--card:#1C1A17;--line:#2B2824;--cream:#F7F2E8;--gold:#D7B56D;--muted:#9E9993}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--cream);font-family:Inter,sans-serif}
+.serif{font-family:'Cormorant Garamond',serif}.mono{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:14px 4vw;background:rgba(11,10,9,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.logo{font-size:26px;letter-spacing:5px;font-weight:800}.logo span{color:var(--gold)}.nav-mid{display:flex;gap:24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.7}
+.pill{border:0;border-radius:100px;padding:11px 18px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer}.pill.cream{background:var(--cream);color:#111}.pill.ghost{background:transparent;border:1px solid var(--line);color:var(--cream)}
+.hero{padding:16vh 4vw 6vh;display:grid;grid-template-columns:1.2fr.8fr;gap:4vw;min-height:95vh;align-items:center}
+.hero h1{font-size:clamp(42px,6.5vw,92px);line-height:.9;font-weight:300}.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{margin-top:18px;color:var(--muted);line-height:1.9;max-width:560px}
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.stat{border:1px solid var(--line);background:var(--bg2);padding:14px 18px;border-radius:18px;min-width:120px}.stat strong{font-family:'Cormorant Garamond';font-size:28px;display:block}
+.hero-img{position:relative}.hero-img img{width:100%;height:80vh;object-fit:cover;border-radius:28px}
+.float{position:absolute;left:-20px;bottom:24px;background:var(--cream);color:#111;border-radius:20px;padding:18px 20px;width:340px}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:12px 0;overflow:hidden;white-space:nowrap}
+.mar-track{display:inline-block;animation:mar 30s linear infinite}@keyframes mar{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sec{padding:80px 4vw}.sec-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:20px;margin-bottom:30px}.sec-head h2{font-size:clamp(34px,5vw,68px);line-height:.9}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:transparent;color:var(--muted);padding:10px 16px;border-radius:100px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}.chip.on,.chip:hover{background:var(--cream);color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.3s}.card:hover{transform:translateY(-6px)}
+.card-img{position:relative;height:260px;overflow:hidden}.card-img img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:white;padding:6px 10px;border-radius:100px;font-size:9px;letter-spacing:1px}.price{position:absolute;top:12px;right:12px;background:var(--gold);color:#111;padding:7px 12px;border-radius:100px;font-weight:900;font-size:12px}.veg{position:absolute;bottom:12px;left:12px;width:22px;height:22px;border:1px solid #3CB371;display:grid;place-items:center;background:white;border-radius:4px}.veg.non{border-color:#C33}.dot{width:10px;height:10px;background:#3CB371;border-radius:50%}.non.dot{background:#C33}
+.card-body{padding:18px}.card-body h3{font-size:24px;margin:6px 0}.card-body p{color:var(--muted);font-size:13px;line-height:1.6;min-height:40px}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.btn{border:0;border-radius:100px;padding:9px 14px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer}.gold{background:var(--gold);color:#111}.line{background:transparent;border:1px solid var(--line);color:var(--cream)}
+#drawer{position:fixed;top:0;right:-460px;width:440px;max-width:94vw;height:100vh;background:var(--cream);color:#111;z-index:5000;transition:.5s;display:flex;flex-direction:column}#drawer.on{right:0}
+.d-head{padding:22px;display:flex;justify-content:space-between;border-bottom:1px solid #0001}.d-items{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}.ci{display:flex;gap:12px;background:white;border-radius:14px;padding:10px;align-items:center}.ci img{width:56px;height:56px;border-radius:10px;object-fit:cover}.d-foot{padding:18px;border-top:1px solid #0001}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);z-index:6000;display:none;place-items:center;padding:4vw}#modal.on{display:grid}.m-box{background:var(--cream);color:#111;border-radius:24px;max-width:640px;width:100%;overflow:hidden}.m-box img{width:100%;height:320px;object-fit:cover}.m-pad{padding:22px}
+.reserve{margin:80px 4vw;background:var(--cream);color:#111;border-radius:34px;padding:4vw;display:grid;grid-template-columns:1.1fr.9fr;gap:4vw}.reserve input,.reserve select,.reserve textarea{width:100%;padding:14px 0;background:transparent;border:0;border-bottom:1px solid #0002;outline:0;margin-top:14px}
+footer{padding:28px 4vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#777;font-size:10px;letter-spacing:1px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.reserve{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo serif">LUXORA <span>DINE</span></div>
+  <div class="nav-mid"><a href="#menu">Menu</a><a href="#reserve">Reserve</a></div>
+  <div style="display:flex;gap:8px"><button class="pill ghost" onclick="setDiet('all',this)" id="dAll">BOTH</button><button class="pill ghost" onclick="setDiet('veg',this)">VEG ONLY</button><button class="pill cream" onclick="toggleDrawer()">CART <span id="cCount">0</span> • <span id="cTop">₹0</span></button></div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="mono">LUXORA DINE — Mumbai • Since 2018 — 4 Cuisines, One Table</div>
+    <h1>French art.<br><em>Italian soul.</em><br>Chinese fire. Indian heart.</h1>
+    <p>Luxora Dine is a four-cuisine catalogue. From Parisian bisque to Kolkata kosha, from Napoli wood-fire to Sichuan wok hei. All under one roof in Colaba. Both veg & non-veg, clearly marked.</p>
+    <div class="hero-stats">
+      <div class="stat"><strong>48</strong><span class="mono">Signature Plates</span></div>
+      <div class="stat"><strong>4</strong><span class="mono">Cuisines</span></div>
+      <div class="stat"><strong>4.8★</strong><span class="mono">Zomato • 2.1k</span></div>
+      <div class="stat"><strong>Both</strong><span class="mono">Veg • Non-Veg</span></div>
+    </div>
+  </div>
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200"><div class="float"><div class="mono">Chef's Recommendation Tonight</div><h4 class="serif" style="font-size:22px;margin-top:6px">French Truffle Risotto + Indian Tandoor Scallops</h4><p style="font-size:12px;color:#666;margin-top:6px">Fusion tasting — only at Luxora Dine</p></div></div>
+</section>
+
+<div class="marquee"><div class="mar-track"><span class="serif" style="font-size:20px;margin-right:60px">🇫🇷 FRENCH • 🇮🇹 ITALIAN • 🇨🇳 CHINESE • 🇮🇳 INDIAN • 🇫🇷 FRENCH • 🇮🇹 ITALIAN • 🇨🇳 CHINESE • 🇮🇳 INDIAN •</span><span class="serif" style="font-size:20px;margin-right:60px">🇫🇷 FRENCH • 🇮🇹 ITALIAN • 🇨🇳 CHINESE • 🇮🇳 INDIAN • 🇫🇷 FRENCH • 🇮🇹 ITALIAN • 🇨🇳 CHINESE • 🇮🇳 INDIAN •</span></div></div>
+
+<section class="sec" id="menu">
+  <div class="sec-head"><div><div class="mono">Full Catalogue</div><h2>Luxora Menu — <em class="serif" style="color:var(--gold)">All 4 Worlds</em></h2></div><div class="tools">
+    <button class="chip on" onclick="setCuisine('all',this)">All Cuisines</button>
+    <button class="chip" onclick="setCuisine('french',this)">🇫🇷 French</button>
+    <button class="chip" onclick="setCuisine('italian',this)">🇮🇹 Italian</button>
+    <button class="chip" onclick="setCuisine('chinese',this)">🇨🇳 Chinese</button>
+    <button class="chip" onclick="setCuisine('indian',this)">🇮🇳 Indian</button>
+  </div></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<div class="reserve" id="reserve"><div><div class="mono">Reserve Your Table</div><h2 class="serif" style="font-size:58px;line-height:.9;color:#111">Your table at Luxora is waiting.</h2><p style="margin-top:12px;color:#555;line-height:1.7">Tell us cuisine preference, we will assign Chef. 80 covers, indoor + terrace.</p></div>
+<form onsubmit="event.preventDefault();checkoutWA()"><input placeholder="Name" required><input placeholder="WhatsApp" required><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><input type="date" required><input type="time" required></div><select><option>2 Guests</option><option>4 Guests</option><option>6 Guests</option><option>12+ Party</option></select><textarea placeholder="Allergies / Veg / Jain / Occasion"></textarea><button class="pill" style="width:100%;margin-top:16px;padding:16px;background:#111;color:white">Reserve + Send Cart on WhatsApp</button></form></div>
+
+<footer><div>© 2026 LUXORA DINE — COLABA, MUMBAI — FRENCH • ITALIAN • CHINESE • INDIAN</div><div class="mono">Both Veg & Non-Veg • Open 12PM - 1AM</div></footer>
+
+<div id="drawer"><div class="d-head"><h3 class="serif" style="font-size:32px">Your Order</h3><button class="pill ghost" style="color:#111;border-color:#0002" onclick="toggleDrawer()">Close</button></div><div class="d-items" id="dItems"></div><div class="d-foot"><div style="display:flex;justify-content:space-between"><span class="mono">Subtotal</span><strong id="sub">₹0</strong></div><div style="display:flex;justify-content:space-between;margin-top:6px"><span class="mono">GST 5%</span><span id="gst">₹0</span></div><div style="display:flex;justify-content:space-between;margin-top:10px;font-size:18px;font-weight:800"><span>Total</span><span id="grand">₹0</span></div><button class="pill" style="width:100%;margin-top:14px;padding:15px;background:#111;color:white" onclick="checkoutWA()">Order on WhatsApp</button></div></div>
+
+<div id="modal" onclick="if(event.target===this)closeM()"><div class="m-box"><img id="mImg"><div class="m-pad"><div class="mono" id="mBadge"></div><h2 class="serif" id="mTitle" style="font-size:34px;margin:8px 0"></h2><p id="mDesc" style="color:#555;line-height:1.7"></p><div style="display:flex;gap:8px;margin-top:18px"><button class="pill" style="flex:1;background:#111;color:white;padding:14px" onclick="addFromM()">Add to Cart</button><button class="pill ghost" style="flex:1;padding:14px;color:#111;border-color:#0002" onclick="closeM()">Close</button></div></div></div></div>
+
+<script>
+const MENU=[
+/* FRENCH */
+{t:"French Onion Soup Gratinee",c:"french",veg:true,b:"🇫🇷 FRENCH • CLASSIC",p:550,d:"Caramelized onion, gruyere crust, baguette, thyme.",k:"VEG • 260 kcal",img:"https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800"},
+{t:"Truffle Mushroom Risotto",c:"french",veg:true,b:"🇫🇷 FRENCH • TRUFFLE",p:1250,d:"Arborio, wild mushrooms, black truffle, parmesan 24mo.",k:"VEG • 420 kcal",img:"https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=800"},
+{t:"Duck Confit à l'Orange",c:"french",veg:false,b:"🇫🇷 FRENCH • SIGNATURE",p:1950,d:"12h duck leg, orange gastrique, pomme puree.",k:"NON-VEG • 580 kcal",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800"},
+{t:"Lobster Bisque",c:"french",veg:false,b:"🇫🇷 FRENCH • SEA",p:1450,d:"Maine lobster, cognac, cream, chive oil.",k:"NON-VEG • 340 kcal",img:"https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800"},
+/* ITALIAN */
+{t:"Burrata & Heirloom Tomato",c:"italian",veg:true,b:"🇮🇹 ITALIAN • ANTIPASTI",p:850,d:"Burrata, heirloom tomato, basil oil, sourdough.",k:"VEG • 310 kcal",img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"},
+{t:"Wood-Fired Margherita DOP",c:"italian",veg:true,b:"🇮🇹 ITALIAN • WOOD FIRE",p:750,d:"San Marzano, fior di latte, basil, 400°C wood oven.",k:"VEG • 480 kcal",img:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800"},
+{t:"Cacio e Pepe Tonarelli",c:"italian",veg:true,b:"🇮🇹 ITALIAN • PASTA",p:950,d:"Tonarelli, pecorino romano, black pepper, pasta water emulsion.",k:"VEG • 520 kcal",img:"https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800"},
+{t:"Lamb Ragu Pappardelle",c:"italian",veg:false,b:"🇮🇹 ITALIAN • SLOW",p:1350,d:"8h lamb ragu, pappardelle, pecorino.",k:"NON-VEG • 640 kcal",img:"https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800"},
+{t:"Tiramisu Classico",c:"italian",veg:true,b:"🇮🇹 ITALIAN • DOLCE",p:550,d:"Mascarpone, espresso, savoiardi, cocoa.",k:"VEG • 380 kcal",img:"https://images.unsplash.com/photo-1571877222312-a941315d0cc3?w=800"},
+/* CHINESE */
+{t:"Veg Crystal Dim Sum (6pc)",c:"chinese",veg:true,b:"🇨🇳 CHINESE • DIM SUM",p:650,d:"Crystal skin, edamame, truffle, chili crisp.",k:"VEG • 240 kcal",img:"https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800"},
+{t:"Chili Garlic Noodles",c:"chinese",veg:true,b:"🇨🇳 CHINESE • WOK",p:750,d:"Hakka noodles, wok hei, burnt garlic, bok choy.",k:"VEG • 420 kcal",img:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800"},
+{t:"Sichuan Kung Pao Chicken",c:"chinese",veg:false,b:"🇨🇳 CHINESE • SICHUAN",p:950,d:"Chicken, Sichuan pepper, peanuts, dried chili, wok toss.",k:"NON-VEG • 480 kcal",img:"https://images.unsplash.com/photo-1525755662778-989d5db533b?w=800"},
+{t:"Peking Duck Pancakes",c:"chinese",veg:false,b:"🇨🇳 CHINESE • SIGNATURE",p:1850,d:"Roast duck, pancakes, hoisin, scallion, cucumber.",k:"NON-VEG • 620 kcal",img:"https://images.unsplash.com/photo-1518983546435-91f8b87fe561?w=800"},
+/* INDIAN */
+{t:"Tandoori Broccoli, Avocado Chaat",c:"indian",veg:true,b:"🇮🇳 INDIAN • TANDOOR",p:650,d:"Broccoli, hung curd, avocado, chaat masala.",k:"VEG • 280 kcal",img:"https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800"},
+{t:"Dal Makhani 12h",c:"indian",veg:true,b:"🇮🇳 INDIAN • SLOW",p:750,d:"Black dal 12h, butter, cream, wood-fired.",k:"VEG • 450 kcal",img:"https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800"},
+{t:"Butter Chicken Luxora",c:"indian",veg:false,b:"🇮🇳 INDIAN • SIGNATURE",p:1150,d:"Tandoor chicken tikka, makhni gravy, fenugreek.",k:"NON-VEG • 580 kcal",img:"https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800"},
+{t:"Kosha Mangsho",c:"indian",veg:false,b:"🇮🇳 INDIAN • BENGALI",p:1250,d:"Slow mutton kosha, mustard oil, luchi (2pc).",k:"NON-VEG • 620 kcal",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800"},
+{t:"Biryani — Dum Chicken",c:"indian",veg:false,b:"🇮🇳 INDIAN • DUM",p:1100,d:"Long grain basmati, saffron, fried onion, raita.",k:"NON-VEG • 680 kcal",img:"https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800"},
+{t:"Filter Coffee Basque Cheesecake",c:"indian french",veg:true,b:"🇮🇳 🇫🇷 FUSION • LUXORA SPECIAL",p:600,d:"Basque cheesecake, South Indian filter coffee, jaggery.",k:"VEG • 390 kcal",img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800"},
+];
+let cuisine='all',diet='all',cart=[],mIdx=0;
+const grid=document.getElementById('grid');
+function render(){
+ let list=MENU.filter(d=>{
+  let cOK = cuisine==='all' || d.c.includes(cuisine);
+  let dOK = diet==='all' || (diet==='veg' && d.veg) || (diet==='non' &&!d.veg);
+  if(diet==='veg' &&!d.veg && cuisine==='all'){} // keep logic simple
+  if(diet==='veg') return cOK && d.veg;
+  if(diet==='non') return cOK &&!d.veg;
+  return cOK;
+ });
+ // special: when diet=all show both
+ if(diet==='all') list=MENU.filter(d=> cuisine==='all' || d.c.includes(cuisine));
+ grid.innerHTML=list.map(x=>{
+  let i=MENU.indexOf(x);
+  return `<div class="card"><div class="card-img"><img src="${x.img}"><span class="tag">${x.b}</span><span class="price">₹${x.p}</span><div class="veg ${x.veg?'':'non'}"><div class="dot"></div></div></div><div class="card-body"><div class="mono">${x.c.toUpperCase()} • ${x.veg?'VEG':'NON-VEG'}</div><h3 class="serif">${x.t}</h3><p>${x.d}</p><div class="foot"><span class="mono" style="color:#777">${x.k}</span><div style="display:flex;gap:6px"><button class="btn line" onclick="openM(${i})">Details</button><button class="btn gold" onclick="addC(${i})">Add +</button></div></div></div></div>`
+ }).join('');
+}
+render();
+function setCuisine(c,el){cuisine=c;document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));el.classList.add('on');render()}
+function setDiet(d,el){
+ diet=d;
+ document.querySelectorAll('#dAll').forEach(()=>{});
+ render();
+ // visual feedback
+ if(d==='veg'){alert('Showing VEG ONLY — French, Italian, Chinese, Indian veg plates')}
+ if(d==='all'){/* both */}
+}
+function addC(i){cart.push(MENU[i]);upd();if(!document.getElementById('drawer').classList.contains('on'))toggleDrawer()}
+function upd(){
+ document.getElementById('cCount').innerText=cart.length;
+ let sub=cart.reduce((s,x)=>s+x.p,0),gst=Math.round(sub*0.05),grand=sub+gst;
+ document.getElementById('cTop').innerText='₹'+sub;document.getElementById('sub').innerText='₹'+sub;document.getElementById('gst').innerText='₹'+gst;document.getElementById('grand').innerText='₹'+grand;
+ let box=document.getElementById('dItems');
+ if(cart.length===0) box.innerHTML='<div style="opacity:.5;text-align:center;margin-top:60px">Cart empty</div>';
+ else box.innerHTML=cart.map((x,i)=>`<div class=ci><img src="${x.img}"><div style="flex:1"><div style="font-weight:700">${x.t}</div><div class=mono style="color:#888">₹${x.p} • ${x.veg?'VEG':'NON-VEG'}</div></div><button onclick="remC(${i})" style="border:0;background:0;cursor:pointer">✕</button></div>`).join('');
+}
+function remC(i){cart.splice(i,1);upd()}
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('on')}
+function openM(i){mIdx=i;let x=MENU[i];document.getElementById('mImg').src=x.img;document.getElementById('mBadge').innerText=x.b;document.getElementById('mTitle').innerText=x.t;document.getElementById('mDesc').innerText=x.d+' | '+x.k;document.getElementById('modal').classList.add('on')}
+function closeM(){document.getElementById('modal').classList.remove('on')}
+function addFromM(){addC(mIdx);closeM()}
+function checkoutWA(){
+ let sub=cart.reduce((s,x)=>s+x.p,0);
+ let msg=`Hi LUXORA DINE, I want to order:%0A`+cart.map(x=>`- ${x.t} (${x.veg?'VEG':'NON-VEG'}) ₹${x.p}`).join('%0A')+`%0ASubtotal ₹${sub}`;
+ window.open('https://wa.me/919999999999?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>
